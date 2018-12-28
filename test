@@ -4233,9 +4233,23 @@ def security_tests():
        app_admin_key,
        )
 
+    #Is-autonomous test cases
     is_autonomous_tests(devices, apps)
 
+    #Set autonomous test cases
     set_autonomous_tests(devices, apps)
+
+    #Reject follow test cases
+    reject_follow_tests(
+        devices,
+        apps,
+        device_keys,
+        app_keys,
+        dev_admin_id,
+        dev_admin_key,
+        app_admin_id,
+        app_admin_key,
+        )
 
     test_time = time.time() - test_time
 
@@ -5414,16 +5428,6 @@ def functional_tests(*args):
         app_admin_key,
         )
 
-    reject_follow_tests(
-        devices,
-        apps,
-        device_keys,
-        app_keys,
-        dev_admin_id,
-        dev_admin_key,
-        app_admin_id,
-        app_admin_key,
-        )
 
     test_time = time.time() - test_time
 
