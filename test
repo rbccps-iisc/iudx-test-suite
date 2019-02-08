@@ -5513,15 +5513,15 @@ def concurrency_tests():
 
 def start_tests(devices, apps, args):
 
-    if args.choice == 'fxnl':
+    if args.choice == 'functional':
 
         functional_tests(devices, apps)
         time_list = output.get()
-    elif args.choice == 'sec':
+    elif args.choice == 'security':
 
         security_tests()
         time_list = output.get()
-    elif args.choice == 'concr':
+    elif args.choice == 'concurrency':
 
         concurrency_tests()
 
@@ -5544,7 +5544,7 @@ if __name__ == '__main__':
         argparse.ArgumentParser(description='Test cases for Corinthian')
     subparser = parser.add_subparsers(dest='choice')
 
-    func_parser = subparser.add_parser('fxnl',
+    func_parser = subparser.add_parser('functional',
             help='Performs functional tests')
 
     func_parser.add_argument(
@@ -5567,10 +5567,10 @@ if __name__ == '__main__':
                              help='Run tests with random devices and apps'
                              )
 
-    sec_parser = subparser.add_parser('sec',
+    sec_parser = subparser.add_parser('security',
             help='Performs security tests')
 
-    conc_parser = subparser.add_parser('concr',
+    conc_parser = subparser.add_parser('concurrency',
             help='Performs concurrency tests')
 
     conc_parser.add_argument(
@@ -5621,7 +5621,7 @@ if __name__ == '__main__':
     devices = 0
     apps = 0
 
-    if args.choice != 'sec':
+    if args.choice != 'security':
 
         if args.random:
             devices = random.randint(10, 20)
