@@ -899,7 +899,7 @@ def app_subscribe(
 
         log('APP ' + app + ' SUBSCRIBING TO ITS QUEUE', '')
 
-	i	= 0
+	i	=   0
 
         while i < count:
 
@@ -913,8 +913,8 @@ def app_subscribe(
             response = sub_req.json()
 
 	    actual = actual + len(response)
-	    
-	    i = i + 1
+            
+            i = i + 1
 
         assert_exit(actual == expected, 'Actual = ' + str(actual)
                     + ' Expected = ' + str(expected))
@@ -1169,10 +1169,9 @@ def dev_subscribe(apps, device_keys, expected):
         log('DEVICE ' + device + ' SUBSCRIBING TO ITS COMMAND QUEUE', ''
             )
 
-	tries	= 0
 	i	= 0
 
-        while i < count + tries:
+        while i < count:
 
             sub_req = subscribe(device, apikey, message_type='command',
                                 num_messages='100')
@@ -2421,6 +2420,7 @@ def invalid_bind(
             entity_type='dev')
 
     r = follow(app_name, str(app_keys[app_name]), dev_name, 'read')
+
     follow_id = r.json()['follow-id-read']
     check(r, 202)
 
@@ -3074,6 +3074,7 @@ def invalid_follow(
     (dev_name, dev_key) = get_entity(device_keys, app_keys,
             entity_type='dev')
 
+    #TODO Check!!!!
     r = follow(dev_name, dev_key, dev_name, 'read', from_id=app_name)
     check(r, 202)
     log('Received 202: OK', '')
@@ -4640,6 +4641,7 @@ def reject_follow_tests(
 
     check_follow_status(app_keys, expected="rejected", expected_counts=devices)
 
+    #TODO Try to follow after rejection
     cleanup()
 
 def bind_as_admin(
