@@ -891,7 +891,11 @@ def app_subscribe(
     message_type='',
     ):
 
-    count = math.ceil(devices / 100.0)
+    if devices > 1000:
+	count = math.ceil(devices / 100.0)
+
+    else:
+	count = 1
 
     actual = 0
 
@@ -904,10 +908,10 @@ def app_subscribe(
         while i < count:
 
             if message_type:
-                sub_req = subscribe(app, apikey, num_messages='100',
+                sub_req = subscribe(app, apikey, num_messages=str(devices),
                                     message_type=message_type)
             else:
-                sub_req = subscribe(app, apikey, num_messages='100')
+                sub_req = subscribe(app, apikey, num_messages=str(devices))
 
             check(sub_req, 200)
             response = sub_req.json()
@@ -1160,7 +1164,10 @@ def dev_subscribe_amqp(apps, device_keys, expected):
 
 def dev_subscribe(apps, device_keys, expected):
 
-    count = math.ceil(apps / 100.0)
+    if apps > 1000:
+	count = math.ceil(apps / 100.0)
+    else:
+	count = 1
 
     actual = 0
 
@@ -1174,7 +1181,7 @@ def dev_subscribe(apps, device_keys, expected):
         while i < count:
 
             sub_req = subscribe(device, apikey, message_type='command',
-                                num_messages='100')
+                                num_messages=str(apps))
 
             check(sub_req, 200)
             response = sub_req.json()
