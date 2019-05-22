@@ -24,7 +24,7 @@ base_url = 'https://localhost'
 s = requests.Session()
 s.mount('https://localhost/', HTTPAdapter(pool_connections=10))
 
-admin_apikey = open('docker/.env', 'r').readline()[:-1].split("=")[1]
+admin_apikey = open('.env', 'r').readline()[:-1].split("=")[1]
 
 output = mp.Queue()
 
@@ -49,7 +49,7 @@ def cleanup():
 
     try:
         subprocess.check_output(cmd, shell=True)
-    except Exception, e:
+    except Exception:
         print 'failed to cleanup'
         sys.exit(1)
 
@@ -2414,7 +2414,7 @@ def invalid_bind(
 
     try:
         p = subprocess.check_output(cmd, shell=True)
-    except Exception, e:
+    except Exception:
         pass
 
     # Bind with a different topic from what was requested in follow
@@ -2461,7 +2461,7 @@ def invalid_bind(
 
     try:
         p = subprocess.check_output(cmd, shell=True)
-    except Exception, e:
+    except Exception:
         pass
 
     # Cross-owner binding
@@ -2507,7 +2507,7 @@ def invalid_bind(
 
     try:
         p = subprocess.check_output(cmd, shell=True)
-    except Exception, e:
+    except Exception:
         pass
 
     # Cross-device binding
@@ -2556,7 +2556,7 @@ def invalid_bind(
 
     try:
         p = subprocess.check_output(cmd, shell=True)
-    except Exception, e:
+    except Exception:
         pass
 
 
@@ -2672,7 +2672,7 @@ def invalid_unbind(
 
     try:
         p = subprocess.check_output(cmd, shell=True)
-    except Exception, e:
+    except Exception:
         pass
 
     # Unbind with a different topic from what was requested in follow
@@ -2728,7 +2728,7 @@ def invalid_unbind(
 
     try:
         p = subprocess.check_output(cmd, shell=True)
-    except Exception, e:
+    except Exception:
         pass
 
     # Cross-owner Unbinding
@@ -2785,7 +2785,7 @@ def invalid_unbind(
 
     try:
         p = subprocess.check_output(cmd, shell=True)
-    except Exception, e:
+    except Exception:
         pass
 
     # Cross-device unbinding
@@ -2845,7 +2845,7 @@ def invalid_unbind(
 
     try:
         p = subprocess.check_output(cmd, shell=True)
-    except Exception, e:
+    except Exception:
         pass
 
 
@@ -2890,7 +2890,7 @@ def invalid_share(
 
     try:
         p = subprocess.check_output(cmd, shell=True)
-    except Exception, e:
+    except Exception:
         pass
 
     # Cross-owner share / Share to self using owner's key
@@ -2916,7 +2916,7 @@ def invalid_share(
 
     try:
         p = subprocess.check_output(cmd, shell=True)
-    except Exception, e:
+    except Exception:
         pass
 
     # Share on behalf of another device
@@ -2947,7 +2947,7 @@ def invalid_share(
 
     try:
         p = subprocess.check_output(cmd, shell=True)
-    except Exception, e:
+    except Exception:
         pass
 
     # Share using invalid follow-id
@@ -2972,7 +2972,7 @@ def invalid_share(
 
     try:
         p = subprocess.check_output(cmd, shell=True)
-    except Exception, e:
+    except Exception:
         pass
 
 
@@ -3055,7 +3055,7 @@ def invalid_follow(
 
     try:
         p = subprocess.check_output(cmd, shell=True)
-    except Exception, e:
+    except Exception:
         pass
 
     # Cross-owner follow
@@ -3091,7 +3091,7 @@ def invalid_follow(
 
     try:
         p = subprocess.check_output(cmd, shell=True)
-    except Exception, e:
+    except Exception:
         pass
 
     # Invalid permission
@@ -3196,7 +3196,7 @@ def invalid_unfollow(
 
     try:
         p = subprocess.check_output(cmd, shell=True)
-    except Exception, e:
+    except Exception:
         pass
 
     # Invalid permission
@@ -3253,7 +3253,7 @@ def invalid_unfollow(
 
     try:
         p = subprocess.check_output(cmd, shell=True)
-    except Exception, e:
+    except Exception:
         pass
 
     # Cross-owner follow
@@ -3310,7 +3310,7 @@ def invalid_unfollow(
 
     try:
         p = subprocess.check_output(cmd, shell=True)
-    except Exception, e:
+    except Exception:
         pass
 
     # Cross-device follow
@@ -3367,7 +3367,7 @@ def invalid_unfollow(
 
     try:
         p = subprocess.check_output(cmd, shell=True)
-    except Exception, e:
+    except Exception:
         pass
 
     # Invalid message-type
@@ -3424,7 +3424,7 @@ def invalid_unfollow(
 
     try:
         p = subprocess.check_output(cmd, shell=True)
-    except Exception, e:
+    except Exception:
         pass
 
 
